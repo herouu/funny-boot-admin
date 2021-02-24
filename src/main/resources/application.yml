@@ -6,10 +6,10 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/boot-admin?characterEncoding=UTF-8&useSSL=false&useUnicode=true&serverTimezone=GMT%2b8
+#    url: jdbc:mysql://localhost:3306/boot-admin?characterEncoding=UTF-8&useSSL=false&useUnicode=true&serverTimezone=GMT%2b8
+    url: jdbc:mysql://101.200.79.90:3306/funny-boot-admin?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&autoReconnect=true
     username: root
-    password: admin123
-    platform: mysql
+    password: adelina
     hikari:
       minimum-idle: 5
       maximum-pool-size: 10
@@ -20,7 +20,7 @@ spring:
       connection-timeout: 30000
       connection-test-query: SELECT 1
   redis:
-    host: localhost
+    host: 101.200.79.90
     password:
     port: 6379
     lettuce:
@@ -32,7 +32,7 @@ spring:
     basename: i18n/message
   quartz:
     # Scheduler 名字。默认为 schedulerName
-    #    scheduler-name: clusteredScheduler
+#    scheduler-name: clusteredScheduler
     # 数据库存储
     job-store-type: jdbc
     #Quartz 是否自动启动
@@ -70,7 +70,7 @@ spring:
             # 以指示JDBCJobStore将JobDataMaps中的所有值都作为字符串，因此可以作为名称 - 值对存储而不是在BLOB列中以其序列化形式存储更多复杂的对象。从长远来看，这是更安全的，因为您避免了将非String类序列化为BLOB的类版本问题
             useProperties: false
             #数据库表前缀
-            tablePrefix: qrtz_
+            tablePrefix: QRTZ_
             #在被认为“失火”之前，调度程序将“容忍”一个Triggers将其下一个启动时间通过的毫秒数。默认值（如果您在配置中未输入此属性）为60000（60秒）。
             misfireThreshold: 60000
             #设置此实例“检入”*与群集的其他实例的频率（以毫秒为单位）。影响检测失败实例的速度。
